@@ -1,11 +1,15 @@
+const gameService = require("../services/gameService");
+
 class GameController {
 	async getGames(req, res) {
-		const games = [
-			{ id: 1, name: 'Game One', price: 19.99 },
-			{ id: 2, name: 'Game Two', price: 29.99 },
-			{ id: 3, name: 'Game Three', price: 39.99 },
-		];
-		res.json(games);
+		const {shops, sort} = req.query;
+		try {
+			const gamesWithDiscounts = await gameService.fetchAllGamesWithDiscounts(shops, sort);
+			res.json(gamesWithDiscounts);
+		} catch (error) {
+			console.error('Error in getDiscountedGames:', error);
+			res.status(500).json({ message: 'Failed to fetch discounted games' });
+		}
 	}
 }
 
