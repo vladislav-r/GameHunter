@@ -9,7 +9,7 @@ class UserController {
 		if (!id) {
 			return next(ApiError.badRequest('Не задан ID'));
 		}
-		res.json(id);
+		res.json({ id: id });
 	}
 }
 
