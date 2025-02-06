@@ -24,6 +24,6 @@
 `method: GET, url: /api/games` - получение списка игр со скидками<br>
 
 #### User (разработка)
-`method: POST, /api/user/register`<br>
-`method: POST, /api/user/login`<br>
-`method: GET, /api/user/auth?id=`<br>
+`method: POST, url: /api/user/register`<br>
+`method: POST, url: /api/user/login`<br>
+`method: GET, url: /api/user/auth?id=`<br>
