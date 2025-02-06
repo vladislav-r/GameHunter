@@ -9,3 +9,10 @@
 `cp .env .env.example` - потом вставить подключение к БД<br>
 `npm install` - установка зависимостей <br>
 `npm run dev` - запуск сервера <br>
+
+
+### Frontend <br>
+
+`cp .env .env.example` - потом вставить подключение к БД<br>
+`npm install` - установка зависимостей <br>
+`npm run dev` - запуск сервера <br>
