@@ -4,15 +4,26 @@
 
 ## Инструкция
 
-### Backend <br>
+#### Backend <br>
 
-`cp .env .env.example` - потом вставить подключение к БД<br>
+`cp .env.example .env` - потом вставить подключение к БД<br>
 `npm install` - установка зависимостей <br>
 `npm run dev` - запуск сервера <br>
 
 
-### Frontend <br>
+#### Frontend <br>
 
-`cp .env .env.example` - потом вставить подключение к БД<br>
+`cp .env.example .env` - ничего менять не надо, если сервер запустится на порту 5000<br>
 `npm install` - установка зависимостей <br>
-`npm run dev` - запуск сервера <br>
+`npm start` - запуск клиента <br>
+
+
+## Эндпоинты к API <br>
+
+#### Games
+`method: GET, url: /api/games` - получение списка игр со скидками<br>
+
+#### User (разработка)
+`method: POST, /api/user/register`<br>
+`method: POST, /api/user/login`<br>
+`method: GET, /api/user/auth?id=`<br>
