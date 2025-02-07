@@ -19,3 +19,11 @@ export const getGameInfo = async id => {
 		throw error;
 	}
 };
+
+export const GetShops = async () => {
+	try {
+	} catch (e) {
+		console.error('Ошибка запроса магазинов:', e);
+		throw e;
+	}
+};
