@@ -22,6 +22,11 @@
 
 #### Games
 `method: GET, url: /api/games` - получение списка игр со скидками<br>
+`method: GET, url: /api/games/?id` - получение инфы по игре<br>
+`method: GET, url: /api/games/?id/price` - получение цен по игре<br>
+
+#### Shops
+`method: GET, url: /api/shops` - получение списка магазинов<br>
 
 #### User (разработка)
 `method: POST, url: /api/user/register`<br>
