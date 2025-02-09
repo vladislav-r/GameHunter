@@ -1,0 +1,72 @@
+@import url(../../styles/_variables.css);
+.games-inner {
+	display: flex;
+    flex-wrap: wrap;
+	gap: 50px;
+	overflow-y: scroll;
+	max-height: 100vh;
+}
+.game {
+	width: 300px;
+	height: 470px;
+	background-color: var(--default-theme-card-background-color);
+	padding: 15px;
+	border-radius: 15px;
+}
+.game-img {
+	width: 300px;
+	height: 300px;
+	margin-bottom: 10px;
+}
+.game-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 15px;
+}
+.game-info {
+	display: flex;
+	justify-content: space-between;
+    flex-direction: column;
+	height: 160px;
+}
+.info-top {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+.info-top h3 {
+	font-size: 1.5rem;
+	color: var(--default-theme-active-text-color);
+}
+.info-top p {
+	font-size: 1.2rem;
+	color: var(--default-theme-non-active-color);
+}
+.info-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+    flex-direction: row;
+    gap: 3px;
+	bottom: 0;
+}
+.original-price {
+	font-size: 1rem;
+	color: var(--default-theme-non-active-color);
+	text-decoration: line-through;
+}
+.discounted-price {
+	color: var(--default-theme-link-color);
+	font-size: 1.75rem;
+	font-weight: 600;
+}
+.shop-button {
+	color: var(--default-theme-background-color);
+	font-weight: 800;
+	text-decoration: none;
+	background-color: var(--default-theme-link-color);
+	padding: 15px 60px;
+	border-radius: 30px;
+	transition: opacity 0.3s ease; 
+}

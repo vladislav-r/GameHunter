@@ -1,0 +1,22 @@
+@import url(../../styles/_variables.css);
+
+nav {
+	padding: 30px 0px;
+	display: flex;
+	justify-content: space-between;
+}
+nav ul{
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	gap: 20px;
+}
+nav ul a {
+	color: var(--default-theme-non-active-color);
+    text-decoration: none;
+	transition: color 0.3s ease;
+	font-weight: 600;
+}
+nav ul a:hover {
+	color: var(--default-theme-link-color);
+}
