@@ -13,6 +13,7 @@ class ShopService {
 			return [];
 		}
 	}
+// 	категории
 }
 
 module.exports = new ShopService();
