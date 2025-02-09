@@ -1,0 +1,107 @@
+.menu-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	background-color: var(--default-theme-card-background-color);
+	padding: 25px 20px;
+	border-radius: 15px;
+}
+.categories-container, .platform-container, .price-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.menu-container h3 {
+	font-size: 1.2rem;
+    color: var(--default-theme-active-text-color);
+	margin-bottom: 10px;
+}
+.category-item {
+	display: flex;
+	gap: 8px;
+}
+.category-item label{
+	color: var(--default-theme-non-active-color);
+	font-weight: 600;
+}
+.custom-checkbox {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 1rem;
+	cursor: pointer;
+	position: relative;
+}
+  
+.custom-checkbox input {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+  
+.checkmark {
+	width: 20px;
+	height: 20px;
+	background-color: var(--default-theme-card-background-color);
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.3s;
+}
+  
+.custom-checkbox input:checked + .checkmark {
+	background-color: #e58e27;
+}
+  
+.custom-checkbox input:checked + .checkmark::after {
+	content: "✔";
+	color: white;
+	font-size: 0.75rem;
+	font-weight: 300;
+}
+.price-container button{
+	background-color: var(--default-theme-link-color);
+	color: var(--default-theme-background-color);
+	font-size: 1rem;
+	font-weight: 600;
+	border: 0;
+	padding: 15px 0px;
+	border-radius: 30px;
+	cursor: pointer;
+	transition: opacity 0.3s ease; 
+	margin-top: 15px;
+}
+.price-filter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 600;
+}
+.price-filter p {
+	color: var(--default-theme-card-background-color);
+	font-size: 2rem;
+	font-weight: 800;
+}
+.price-filter input {
+	width: 60px;
+	padding: 15px;
+	border: 0;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--default-theme-active-text-color);
+	background-color: var(--default-theme-card-background-color);
+}
+/* Для Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Для Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

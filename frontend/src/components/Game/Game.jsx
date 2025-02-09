@@ -1,4 +1,3 @@
-import { getGameInfo } from '../api';
 
 function Game({ id }) {
 	return (
