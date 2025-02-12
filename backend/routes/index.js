@@ -9,4 +9,5 @@ router.use('/user', userRouter);// /api/user/
 router.use('/games', gameRouter);// /api/games/
 router.use('/shops', shopRouter);// /api/shops/
 
+
 module.exports = router;

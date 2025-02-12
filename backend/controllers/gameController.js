@@ -31,6 +31,46 @@ class GameController {
 			res.status(500).json({ message: 'Failed to fetch game info' });
 		}
 	}
+
+
+	async getGameCategory(req, res) {
+
+		console.log('Запрос на получение категорий:', req.query);
+		const { id } = req.query;
+		if (!id) {
+			return res.status(400).json({ message: 'Game ID is required' });
+	}
+		try {
+			const gameCategory = await gameService.fetchGameCategory(id);
+			console.log('Ответ от сервиса категорий:', gameCategory);
+			res.json(gameCategory);
+		} catch(e) {
+			console.error('Error in getGameCategory:', e);
+			res.status(500).json({message: 'Failed to fetch game info'})
+		}
+
+// 	async getGameCategory(req, res) {
+//     console.log("✅ Функция getGameCategory вызвана");
+    
+//     const { id } = req.params;
+//     console.log(`📢 ID категории: ${id}`);
+
+//     try {
+//         const gameCategory = await gameService.fetchGameCategory(id);
+//         console.log("📢 Данные из API:", gameCategory);
+//         res.json(gameCategory);
+//     } catch (e) {
+//         console.error('❌ Ошибка в getGameCategory:', e);
+//         res.status(500).json({ message: 'Failed to fetch game categories' });
+//     }
+// }
+		
+	
+	}
 }
+
+
+
+	
 
 module.exports = new GameController();
