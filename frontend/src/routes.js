@@ -6,7 +6,6 @@ const routes = {
 	// games
 	games: `${API_BASE_URL}/games`,
 	gameInfo: ({ id }) => `${API_BASE_URL}/games/${id}`,
-
 	// shops
 	shops: `${API_BASE_URL}/shops`,
 };
