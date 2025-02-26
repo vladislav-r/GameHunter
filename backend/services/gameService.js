@@ -63,6 +63,22 @@ class GameService {
 			return [];
 		}
 	}
-}
+
+// Получение категории игры 
+	async fetchGameCategory(id) {
+		try {
+			const response = await axios.post(
+				`https://api.isthereanydeal.com/collection/groups/v1?key=${process.env.IS_THERE_ANY_DEAL_API_KEY}`,
+				{ids: [id]},
+				{ headers: { 'Content-Type': 'application/json' } },
+			);
+			return response.data;
+		} catch (error) {
+			console.error('Error fetching game info:', error);
+			return [];
+		}
+	}
+	}
+
 
 module.exports = new GameService();
