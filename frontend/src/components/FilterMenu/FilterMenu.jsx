@@ -3,15 +3,22 @@ import './FilterMenu.css';
 
 const FilterMenu = ({ onFilterChange }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [selectedShops, setSelectedShops] = useState([]);
   const [priceFrom, setPriceFrom] = useState('');
-
   const [priceTo, setPriceTo] = useState('');
 
-  const categories = ['Инди', 'Приключения', 'ММО', 'Казуальные игры', 'Стратегии', 'Симуляторы', 'Спортивные игры'];
-  const platforms = ['Steam', 'GOG', 'Epic Games', 'PlayStation 4', 'PlayStation 5', 'Xbox One', 'Xbox Series X/S'];
-  const shops = ['Steam', 'GOG']; // Можно подставить те, что возвращает API
+  // Здесь можно сопоставить названия категорий с тегами из API
+  const shops = ['Steam', 'GOG'];
+  const categoryMap = {
+    '5': 'RPG',
+    '4': 'Action RPG',
+    '3': 'Adventure',
+    '2': 'Open World',
+    '1': 'Horror',
+    '6': 'Roguelike',
+    '7': 'FPS',
+    // Добавьте другие категории по аналогии
+  };
 
   const handleCategoryChange = (category) => {
     setSelectedCategories((prev) =>
@@ -19,11 +26,7 @@ const FilterMenu = ({ onFilterChange }) => {
     );
   };
 
-  const handlePlatformChange = (platform) => {
-    setSelectedPlatforms((prev) =>
-      prev.includes(platform) ? prev.filter((p) => p !== platform) : [...prev, platform]
-    );
-  };
+  const categories = Object.values(categoryMap);
 
   const handleShopChange = (shop) => {
     setSelectedShops((prev) =>
@@ -32,9 +35,13 @@ const FilterMenu = ({ onFilterChange }) => {
   };
 
   const handleSubmit = () => {
+    // Здесь мы получаем не ID, а реальные названия категорий
+    const selectedTags = selectedCategories.map(category => category.toLowerCase().trim());
+  
+    console.log("Selected Tags for filtering: ", selectedTags); // Должно вывести ['rpg', 'action rpg']
+  
     onFilterChange({
-      categories: selectedCategories,
-      platforms: selectedPlatforms,
+      categories: selectedTags, // Передаем реальные названия тегов!
       shops: selectedShops,
       priceFrom,
       priceTo,
@@ -43,7 +50,7 @@ const FilterMenu = ({ onFilterChange }) => {
 
   return (
     <section className="menu-container">
-      {/* <div className="categories-container">
+      <div className="categories-container">
         <h3>Категории</h3>
         {categories.map((category) => (
           <div className="category-item" key={category}>
@@ -58,24 +65,7 @@ const FilterMenu = ({ onFilterChange }) => {
             </label>
           </div>
         ))}
-      </div> */}
-
-      {/* <div className="platform-container">
-        <h3>Платформы</h3>
-        {platforms.map((platform) => (
-          <div className="category-item" key={platform}>
-            <label className="custom-checkbox">
-              <input
-                type="checkbox"
-                checked={selectedPlatforms.includes(platform)}
-                onChange={() => handlePlatformChange(platform)}
-              />
-              <span className="checkmark"></span>
-              {platform}
-            </label>
-          </div>
-        ))}
-      </div> */}
+      </div>
 
       <div className="shop-container">
         <h3>Магазины</h3>
@@ -88,7 +78,7 @@ const FilterMenu = ({ onFilterChange }) => {
                 onChange={() => handleShopChange(shop)}
               />
               <span className="checkmark"></span>
-              <span className="shop-name">{shop}</span>
+              {shop}
             </label>
           </div>
         ))}

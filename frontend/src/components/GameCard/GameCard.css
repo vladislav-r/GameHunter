@@ -30,7 +30,9 @@
 	background-color: var(--default-theme-card-background-color);
 	padding: 15px;
 	border-radius: 15px;
+	text-decoration: none;
 }
+
 .game-img {
 	width: 300px;
 	height: 300px;

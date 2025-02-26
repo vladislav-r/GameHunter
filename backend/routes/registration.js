@@ -1,6 +1,6 @@
-import express from 'express';
-import User from './models/User.js'; // путь к модели
-import bcrypt from 'bcryptjs';
+const express = require('express');
+const User = require('../models/User.js'); // Убери .js, если не работает
+const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 
@@ -8,18 +8,16 @@ router.post('/register', async (req, res) => {
     const { login, email, userRole, password } = req.body;
 
     try {
-        // Проверяем, существует ли пользователь с таким логином или email
         const existingUser = await User.findOne({ $or: [{ login }, { email }] });
         if (existingUser) {
             return res.status(400).json({ message: 'User with this login or email already exists.' });
         }
 
-        // Создаем нового пользователя
         const newUser = new User({
             login,
             email,
             userRole,
-            passwordHash: password, // пароль будет хешироваться в модели
+            passwordHash: password,
         });
 
         await newUser.save();
@@ -30,4 +28,4 @@ router.post('/register', async (req, res) => {
     }
 });
 
-export default router;
+module.exports = router;
