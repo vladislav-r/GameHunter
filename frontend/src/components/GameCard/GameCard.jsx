@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getGameInfo, getGames } from '../../api';
 import './GameCard.css';
 import { Link } from 'react-router-dom';
+import Loader from "../Loader/Loader";
 
 function GameCard({ filters }) {
   const [games, setGames] = useState([]);
@@ -38,7 +39,8 @@ function GameCard({ filters }) {
     loadGames();
   }, []);
 
-  if (loading) return <p>Загрузка...</p>;
+  // if (loading) return <p>Загрузка...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
   if (!games.length) return <p>Нет доступных игр</p>;
 

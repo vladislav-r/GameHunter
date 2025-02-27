@@ -101,7 +101,7 @@ const FilterMenu = ({ onFilterChange }) => {
             onChange={(e) => setPriceTo(e.target.value)}
           />
         </div>
-        <button onClick={handleSubmit}>Применить фильтры</button>
+        <button onClick={handleSubmit}>Применить</button>
       </div>
     </section>
   );
