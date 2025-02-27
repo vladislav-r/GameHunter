@@ -41,8 +41,8 @@ function GameCard({ filters }) {
 
   // if (loading) return <p>Загрузка...</p>;
   if (loading) return <Loader />;
-  if (error) return <p>{error}</p>;
-  if (!games.length) return <p>Нет доступных игр</p>;
+  if (error) return <p className='error-message'>{error}</p>;
+  if (!games.length) return <p className='error-message'>Нет доступных игр</p>;
 
   const filteredGames = games.filter((game) => {
     if (!game || typeof game !== 'object') return false;
@@ -51,16 +51,23 @@ function GameCard({ filters }) {
       ? game.tags.map(tag => tag.trim().toLowerCase()) 
       : [];
   
-    console.log("Filter Categories: ", filters.categories); // Теперь должны быть ['rpg', 'action rpg']
-    console.log("Game Tags: ", gameTags);
-  
     const categoryMatch =
       filters.categories.length === 0 ||
       filters.categories.some((filterTag) => gameTags.includes(filterTag));
   
-    console.log("Category Match: ", categoryMatch);
+      const shopMatch =
+      filters.shops.length === 0 ||
+      filters.shops.some((shop) => game.shop?.includes(shop));
   
-    return categoryMatch;
+  
+    // Фильтрация по цене
+    const priceMatch =
+      (!filters.priceFrom || game.discountedPrice >= parseFloat(filters.priceFrom)) &&
+      (!filters.priceTo || game.discountedPrice <= parseFloat(filters.priceTo));
+  
+
+  
+    return categoryMatch && shopMatch && priceMatch;
   });
   
 
@@ -91,7 +98,7 @@ function GameCard({ filters }) {
             </Link>
           ))
         ) : (
-          <p>Игры не найдены по заданным фильтрам</p>
+          <p className='error-message'>Игры не найдены по заданным фильтрам</p>
         )}
       </div>
     </div>
