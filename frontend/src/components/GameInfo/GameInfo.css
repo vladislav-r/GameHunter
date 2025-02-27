@@ -1,0 +1,31 @@
+.game-layout {
+	width: 100%;
+	display: flex;
+	gap: 60px;
+	margin-top: 50px;
+}
+.game-content {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+.game-content img{
+	width: 100%;
+	border-radius: 15px;
+}
+.game-info-layout {
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+	background-color: var(--default-theme-card-background-color);
+	padding: 20px 30px;
+	border-radius: 15px;
+}
+.game-info-layout h2 {
+	font-size: 4rem;
+	margin-bottom: 30px;
+}
+.game-info-layout p {
+	font-size: 1rem;
+	margin-bottom: 15px;
+}

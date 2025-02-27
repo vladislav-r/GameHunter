@@ -6,7 +6,7 @@
 	padding: 25px 20px;
 	border-radius: 15px;
 }
-.categories-container, .platform-container, .price-container {
+.categories-container, .platform-container, .price-container, .shop-container {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -72,6 +72,7 @@
 	cursor: pointer;
 	transition: opacity 0.3s ease; 
 	margin-top: 15px;
+	z-index: 5;
 }
 .price-filter {
 	display: flex;
@@ -82,7 +83,7 @@
 .price-filter p {
 	color: var(--default-theme-card-background-color);
 	font-size: 2rem;
-	font-weight: 800;
+	font-weight: 600;
 }
 .price-filter input {
 	width: 60px;
@@ -99,9 +100,21 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+  z-index: 6;
+  transition: background-color 0.3s ease;
 }
-
+input[type="number"]:hover {
+	background-color: #e58f27;
+}
 /* Для Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+  transition: background-color 0.3s ease;
+  z-index: 6;
+}
+.shop-name {
+	transition: color 0.3s ease;
+}
+.shop-name:hover {
+	color: #e58e27;
 }

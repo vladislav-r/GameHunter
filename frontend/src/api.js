@@ -12,7 +12,7 @@ export const getGames = async () => {
 };
 export const getGameInfo = async id => {
 	try {
-		const response = await axios.get(routes.gameInfo, id);
+		const response = await axios.get(routes.gameInfo({id}));
 		return response.data;
 	} catch (error) {
 		console.error('Ошибка запроса всех игр:', error);
