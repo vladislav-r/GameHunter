@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import bcryptjs from 'bcryptjs';
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
     login: {
@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    email:{
+    email: {
         type: String,
         required: true,
     },
@@ -16,19 +16,18 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
     passwordHash: {
-			type: String,
-			required: true,
+        type: String,
+        required: true,
     }
 });
 
-// Хешируем пароль перед отправкой в БДс
+// Хешируем пароль перед сохранением в базе данных
 UserSchema.pre('save', async function(next) {
-	if(this.isModified('passwordHash')) {
-		const salt = await bcrypt.genSalt(10);
-		this.passwordHash = await bcrypt.hash(this.passwordHash, salt);
-	}
-	next();
-
+    if (this.isModified('passwordHash')) {
+        const salt = await bcrypt.genSalt(10);
+        this.passwordHash = await bcrypt.hash(this.passwordHash, salt);
+    }
+    next();
 });
 
-export default mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema); // Используем module.exports для экспорта модели
