@@ -6,11 +6,11 @@ const User = require('../models/User'); // Путь к модели User
 const router = express.Router();
 
 // Маршрут для входа
-router.post('/login', async (req, res) => {
-    const { login, password } = req.body;
+router.post('/', async (req, res) => {
+    const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ login });
+        const user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({ message: 'Пользователь не найден' });
         }

@@ -10,7 +10,7 @@ const loginRouter = require('./loginRouter');
 router.use('/user', userRouter);// /api/user/
 router.use('/games', gameRouter);// /api/games/
 router.use('/shops', shopRouter);// /api/shops/
-router.use('/register', registrationRouter); // /api/register
+router.use('/registration', registrationRouter); // /api/register
 router.use('/login', loginRouter); // /api/login
 
 // Подключаем MongoDB
