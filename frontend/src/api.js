@@ -12,7 +12,7 @@ export const getGames = async () => {
 };
 export const getGameInfo = async id => {
 	try {
-		const response = await axios.get(routes.gameInfo, id);
+		const response = await axios.get(routes.gameInfo({id}));
 		return response.data;
 	} catch (error) {
 		console.error('Ошибка запроса всех игр:', error);
@@ -20,8 +20,10 @@ export const getGameInfo = async id => {
 	}
 };
 
-export const GetShops = async () => {
+export const getShops = async () => {
 	try {
+		const response = await axios.get(routes.shops);
+		return response.data;
 	} catch (e) {
 		console.error('Ошибка запроса магазинов:', e);
 		throw e;

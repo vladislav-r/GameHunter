@@ -6,7 +6,7 @@
 	padding: 25px 20px;
 	border-radius: 15px;
 }
-.categories-container, .platform-container, .price-container {
+.categories-container, .platform-container, .price-container, .shop-container {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -65,13 +65,22 @@
 	background-color: var(--default-theme-link-color);
 	color: var(--default-theme-background-color);
 	font-size: 1rem;
-	font-weight: 600;
+	font-weight: 700;
+	line-height: 1;
 	border: 0;
-	padding: 15px 0px;
-	border-radius: 30px;
+	padding: 15px 0;
+	border-radius: 15px;
 	cursor: pointer;
-	transition: opacity 0.3s ease; 
-	margin-top: 15px;
+	transition: filter 0.3s ease; 
+	z-index: 5;
+	font-family: inherit;
+}
+.price-container .reset-btn {
+	background-color: var(--default-theme-background-color);
+	color: var(--default-theme-link-color);
+}
+.price-container button:hover {
+	filter: brightness(0.8);
 }
 .price-filter {
 	display: flex;
@@ -82,26 +91,51 @@
 .price-filter p {
 	color: var(--default-theme-card-background-color);
 	font-size: 2rem;
-	font-weight: 800;
+	font-weight: 600;
 }
 .price-filter input {
 	width: 60px;
-	padding: 15px;
-	border: 0;
+	padding: 10px 12px;
 	border-radius: 8px;
 	font-size: 1rem;
 	font-weight: 600;
 	color: var(--default-theme-active-text-color);
 	background-color: var(--default-theme-card-background-color);
+	outline: none; 
+	border: 2px solid transparent;
 }
 /* Для Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+  z-index: 6;
+  transition: border 0.3s ease;
+}
+input[type="number"]:hover,
+input[type="number"]:active,
+input[type="number"]:focus {
+	border: 2px solid var(--default-theme-active-text-color);
+	outline: none; 
+	box-shadow: none;
 }
 
 /* Для Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+  transition: border 0.3s ease;
+  z-index: 6;
 }
+.menu-item {
+	transition: color 0.3s ease;
+}
+.menu-item:hover {
+	color: var(--default-theme-active-text-color);
+}
+.submit-container {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+

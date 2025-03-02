@@ -1,0 +1,46 @@
+.game-layout {
+	width: 100%;
+	display: flex;
+	gap: 60px;
+	margin-top: 50px;
+}
+.game-content {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	width: 30%;
+}
+.game-content img{
+	width: 100%;
+	border-radius: 15px;
+}
+.shop-button{
+	margin-top: 20px;
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.game-info-layout {
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+	background-color: var(--default-theme-card-background-color);
+	padding: 20px 30px;
+	border-radius: 15px;
+	width: 100%;
+}
+.game-info-layout h2 {
+	font-size: 3rem;
+	margin-bottom: 20px;
+}
+.game-info-layout p {
+	font-size: 1rem;
+	margin-bottom: 10px;
+}
+.developer-info {
+	margin-bottom: 10px;
+}
+ .developer-info p{
+    font-size: 1.7rem;
+}
