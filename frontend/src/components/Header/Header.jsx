@@ -6,9 +6,9 @@ const Header = () => {
 			<nav>
 				<ul>
                     <li><a href="/">Главная</a></li>
-                    <li><a href="/streams">Стримы</a></li>
-                    <li><a href="/store">Магазин</a></li>
-					<li><a href="/news">Новости</a></li>
+                    {/*<li><a href="/streams">Стримы</a></li>*/}
+                    {/*<li><a href="/store">Магазин</a></li>*/}
+					{/*<li><a href="/news">Новости</a></li>*/}
                 </ul>
 			</nav>
 			<div className="user-container">

@@ -5,8 +5,6 @@
 	/*gap: 50px;*/
 	/*overflow-y: scroll;*/
 	/*max-height: 91.5vh;*/
-
-
 	max-height: 88.5vh;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -14,6 +12,7 @@
 	overflow-y: scroll;
 	padding-right: 10px;
 }
+
 .games-inner::-webkit-scrollbar {
 	width: 10px;
 }
@@ -38,7 +37,9 @@
     margin-bottom: 10px;
 }
 .game {
-	width: 240px;
+	max-width: 240px;
+	/*height: 380px;*/
+	width: 100%;
 	height: 380px;
 	background-color: var(--default-theme-card-background-color);
 	padding: 15px;
@@ -65,8 +66,6 @@
 	display: flex;
 	justify-content: space-between;
     flex-direction: column;
-	height: 170px;
-
 	height: 150px;
 }
 .info-top {
@@ -109,4 +108,94 @@
 	border-radius: 15px;
 	transition: all 0.3s ease;
 	line-height: 1;
+}
+
+@media screen and (max-width: 1400px) {
+	.games-inner{
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width: 1100px) {
+	.games-inner{
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.game{
+		max-width: 200px;
+		height: 320px;
+	}
+	.game-img {
+		height: 180px;
+		margin-bottom: 10px;
+		overflow: hidden;
+	}
+	.game-info{
+		height: 120px;
+	}
+	.info-top h3 {
+		font-size: 1rem;
+		color: var(--default-theme-active-text-color);
+	}
+	.info-top p {
+		font-size: 0.9rem;
+		color: var(--default-theme-non-active-color);
+	}
+	.info-bottom{
+		justify-content: space-between;
+	}
+	.original-price {
+		font-size: 0.9rem;
+	}
+	.discounted-price {
+		font-size: 1.3rem;
+	}
+	.shop-button {
+		padding: 10px 20px;
+		border-radius: 10px;
+		margin-left: auto;
+
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.games-wrapper{
+		padding-right: 10px;
+	}
+	.games-inner{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.game{
+		max-width: 100%;
+		height: 380px;
+		padding: 10px;
+	}
+	.game-img {
+		height: 220px;
+		margin-bottom: 10px;
+		overflow: hidden;
+	}
+	.game-info{
+		height: 120px;
+	}
+	.info-top h3 {
+		font-size: 1rem;
+		color: var(--default-theme-active-text-color);
+	}
+	.info-top p {
+		font-size: 0.9rem;
+		color: var(--default-theme-non-active-color);
+	}
+	.info-bottom{
+		justify-content: space-between;
+	}
+	.original-price {
+		font-size: 0.9rem;
+	}
+	.discounted-price {
+		font-size: 1.3rem;
+	}
+	.shop-button {
+		padding: 10px 20px;
+		border-radius: 10px;
+		margin-left: auto;
+	}
 }

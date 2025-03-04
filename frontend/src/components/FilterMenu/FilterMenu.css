@@ -139,3 +139,10 @@ input[type="number"] {
 	gap: 10px;
 }
 
+@media screen and (max-width: 992px){
+	.menu-container{
+		padding-right: 15px;
+		padding-left: 20px;
+	}
+
+}
