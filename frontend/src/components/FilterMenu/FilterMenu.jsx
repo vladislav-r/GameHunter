@@ -7,7 +7,6 @@ const FilterMenu = ({ onFilterChange }) => {
   const [priceFrom, setPriceFrom] = useState('');
   const [priceTo, setPriceTo] = useState('');
 
-  // Здесь можно сопоставить названия категорий с тегами из API
   const shops = ['Steam', 'GOG'];
   const categoryMap = {
     '5': 'RPG',
@@ -17,7 +16,6 @@ const FilterMenu = ({ onFilterChange }) => {
     '1': 'Horror',
     '6': 'Roguelike',
     '7': 'FPS',
-    // Добавьте другие категории по аналогии
   };
 
   const handleCategoryChange = (category) => {
@@ -35,16 +33,26 @@ const FilterMenu = ({ onFilterChange }) => {
   };
 
   const handleSubmit = () => {
-    // Здесь мы получаем не ID, а реальные названия категорий
-    const selectedTags = selectedCategories.map(category => category.toLowerCase().trim());
-  
-    console.log("Selected Tags for filtering: ", selectedTags); // Должно вывести ['rpg', 'action rpg']
-  
+    const selectedTags = selectedCategories.map((category) => category.toLowerCase().trim());
+
     onFilterChange({
-      categories: selectedTags, // Передаем реальные названия тегов!
+      categories: selectedTags,
       shops: selectedShops,
       priceFrom,
       priceTo,
+    });
+  };
+
+  const handleReset = () => {
+    setSelectedCategories([]);
+    setSelectedShops([]);
+    setPriceFrom('');
+    setPriceTo('');
+    onFilterChange({
+      categories: [],
+      shops: [],
+      priceFrom: '',
+      priceTo: '',
     });
   };
 
@@ -61,7 +69,7 @@ const FilterMenu = ({ onFilterChange }) => {
                 onChange={() => handleCategoryChange(category)}
               />
               <span className="checkmark"></span>
-              {category}
+              <div className="menu-item">{category}</div>
             </label>
           </div>
         ))}
@@ -78,7 +86,7 @@ const FilterMenu = ({ onFilterChange }) => {
                 onChange={() => handleShopChange(shop)}
               />
               <span className="checkmark"></span>
-              {shop}
+              <div className="menu-item">{shop}</div>
             </label>
           </div>
         ))}
@@ -101,7 +109,10 @@ const FilterMenu = ({ onFilterChange }) => {
             onChange={(e) => setPriceTo(e.target.value)}
           />
         </div>
-        <button onClick={handleSubmit}>Применить</button>
+        <div className="submit-container">
+          <button onClick={handleSubmit}>Применить</button>
+          <button onClick={handleReset} className='reset-btn'>Сбросить</button>
+        </div>
       </div>
     </section>
   );

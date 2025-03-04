@@ -53,5 +53,5 @@ code {
 }
 
 .shop-button:hover, button:hover{
-  background-color: #fa9f3a;
+  filter: brightness(0.7);
 }

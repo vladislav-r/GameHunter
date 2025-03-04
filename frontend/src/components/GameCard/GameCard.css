@@ -32,6 +32,11 @@
 	background-color: var(--default-theme-active-text-color);
 	opacity: 1;
 }
+.error-message {
+	color: var(--default-theme-active-text-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
 .game {
 	width: 240px;
 	height: 380px;

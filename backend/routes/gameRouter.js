@@ -41,5 +41,3 @@ module.exports = router;
 //     gameController.getGameCategory(req, res);
 // });
 
-module.exports = router;
-

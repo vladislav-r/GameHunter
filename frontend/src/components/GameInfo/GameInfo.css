@@ -14,7 +14,9 @@
 	width: 100%;
 	border-radius: 15px;
 }
-.game-content .shop-button{
+.shop-button{
+	margin-top: 20px;
+	width: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -30,9 +32,15 @@
 }
 .game-info-layout h2 {
 	font-size: 3rem;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 .game-info-layout p {
 	font-size: 1rem;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+}
+.developer-info {
+	margin-bottom: 10px;
+}
+ .developer-info p{
+    font-size: 1.7rem;
 }

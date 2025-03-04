@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGameInfo } from '../../api';
+import Loader from '../Loader/Loader';
 import './GameInfo.css';
 
 function GameInfo() {
@@ -24,27 +25,30 @@ function GameInfo() {
     fetchGameInfo();
   }, [id]);
 
-  if (loading) return <p>Загрузка...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
   if (!game) return <p>Игра не найдена</p>;
 
   return (
     <div className="game-layout">
-		<div className="game-content">
-			<img src={game.assets?.boxart || 'https://placehold.in/600x200'} alt={game.title} className="game-image" />	
-			<a href={game.urls.game} target="_blank" rel="noopener noreferrer" className="shop-button">Купить</a>
-		</div>
-	  <div className="game-info-layout">
-		<h2>{game.title}</h2>
-		<p><strong>Разработчик:</strong> {game.developers.map(dev => dev.name).join(', ')}</p>
-		<p><strong>Издатель:</strong> {game.publishers.map(pub => pub.name).join(', ')}</p>
-		<p><strong>Дата выхода:</strong> {game.releaseDate}</p>
-		<p><strong>Категории:</strong> {game.tags.join(', ')}</p>
-		<p><strong>Платформы:</strong> {game.shop?.join(', ') || 'Не указано'}</p>
-		<p><strong>Рейтинг:</strong> {game.reviews[0]?.score} / 100 ({game.reviews[0]?.count} оценок, {game.reviews[0]?.source})</p>
-		<p><strong>Недавние игроки:</strong> {game.players.recent} | Пик: {game.players.peak}</p>
-		<p><strong>Собрали в коллекции:</strong> {game.stats.collected} | В листе ожидания: {game.stats.waitlisted}</p>
-	  </div>
+      <div className="game-content">
+        <img src={game.assets?.boxart || 'https://placehold.in/600x200'} alt={game.title} className="game-image" />	
+       
+      </div>
+      <div className="game-info-layout">
+        <h2>{game.title}</h2>
+        <div className='developer-info'>
+            <p><strong>Разработчик:</strong> {game.developers.map(dev => dev.name).join(', ')}</p>
+            <p><strong>Издатель:</strong> {game.publishers.map(pub => pub.name).join(', ')}</p>
+        </div>
+        <p><strong>Дата выхода:</strong> {game.releaseDate}</p>
+        <p><strong>Категории:</strong> {game.tags.join(', ')}</p>
+        <p><strong>Платформы:</strong> {game.shop?.join(', ') || 'Не указано'}</p>
+        <p><strong>Рейтинг:</strong> {game.reviews[0]?.score} / 100 ({game.reviews[0]?.count} оценок, {game.reviews[0]?.source})</p>
+        <p><strong>Недавние игроки:</strong> {game.players.recent} | Пик: {game.players.peak}</p>
+        <p><strong>Собрали в коллекции:</strong> {game.stats.collected} | В листе ожидания: {game.stats.waitlisted}</p>
+        <a href={game.urls.game} target="_blank" rel="noopener noreferrer" className="shop-button">Купить</a>
+      </div>
       
     </div>
   );
