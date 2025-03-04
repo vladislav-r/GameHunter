@@ -1,0 +1,25 @@
+.profile-container {
+	width: 400px;
+	margin: 50px auto;
+	padding: 20px;
+	background: #1c1c1c;
+	border-radius: 10px;
+	text-align: center;
+	color: #fff;
+}
+
+.profile-container h2, .profile-container h3 {
+	color: orange;
+}
+
+.profile-container ul {
+	list-style: none;
+	padding: 0;
+}
+
+.profile-container li {
+	background: #333;
+	margin: 5px 0;
+	padding: 10px;
+	border-radius: 5px;
+}
