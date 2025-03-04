@@ -1,34 +1,32 @@
 const mongoose = require('mongoose');
-const bcryptjs = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
-    login: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    email:{
-        type: String,
-        required: true,
-    },
-    userRole: {
-        type: String,
-        required: true,
-    },
-    passwordHash: {
-			type: String,
-			required: true,
-    }
+	login: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+	email: {
+		type: String,
+		required: true,
+	},
+	userRole: {
+		type: String,
+		required: true,
+	},
+	password: {
+		type: String,
+		required: true,
+	}
 });
 
-// Хешируем пароль перед отправкой в БДс
 UserSchema.pre('save', async function(next) {
-	if(this.isModified('passwordHash')) {
+	if (this.isModified('password')) {
 		const salt = await bcrypt.genSalt(10);
-		this.passwordHash = await bcrypt.hash(this.passwordHash, salt);
+		this.password = await bcrypt.hash(this.password, salt);
 	}
 	next();
-
 });
 
 module.exports = mongoose.model('User', UserSchema);

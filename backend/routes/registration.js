@@ -1,30 +1,32 @@
 const express = require('express');
-const User = require('../models/User.js'); // Убери .js, если не работает
-const bcrypt = require('bcryptjs');
-
 const router = express.Router();
+const User = require('../models/User'); // Подключаем модель пользователя
 
-router.post('/register', async (req, res) => {
-    const { login, email, userRole, password } = req.body;
-
+router.post('/', async (req, res) => { // Это /api/registration/
     try {
-        const existingUser = await User.findOne({ $or: [{ login }, { email }] });
+        const { login, email, userRole, password } = req.body;
+
+        // Проверка, есть ли уже пользователь
+        const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ message: 'User with this login or email already exists.' });
+            return res.status(400).json({ message: 'Пользователь уже существует' });
         }
 
-        const newUser = new User({
+        // Создаём нового пользователя
+		console.log('Создаём пользователя:', { login, email, userRole, password });
+       
+        const newUser = await User.create({
             login,
             email,
             userRole,
-            passwordHash: password,
+            password // Нужно хешировать пароль!
         });
-
+        console.log(newUser.passwordHash)
         await newUser.save();
-        res.status(201).json({ message: 'User registered successfully!' });
+        res.status(201).json({ message: 'Регистрация успешна', user: newUser });
+
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error' });
+        res.status(500).json({ message: 'Ошибка сервера', error });
     }
 });
 

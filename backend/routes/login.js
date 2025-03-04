@@ -1,36 +1,31 @@
 const express = require('express');
-const User = require('../models/User'); // Путь к модели User
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const User = require('../models/User'); // Путь к модели User
 
 const router = express.Router();
 
 // Маршрут для входа
-router.post('/login', async (req, res) => {
-    const { login, password } = req.body; // Получаем login и password из тела запроса
+router.post('/', async (req, res) => {
+    const { email, password } = req.body;
 
     try {
-        // Проверка, существует ли пользователь с таким логином
-        const user = await User.findOne({ login });
+        const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ message: 'User not found' });
+            return res.status(400).json({ message: 'Пользователь не найден' });
         }
 
-        // Проверка пароля
-        const isMatch = await bcrypt.compare(password, user.passwordHash);
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid password' });
+            return res.status(400).json({ message: 'Неверный пароль!' });
         }
 
-        // Создание JWT
         const token = jwt.sign(
-            { userId: user._id, userRole: user.userRole },  // Payload (данные для токена)
-            'secret-key', // секретный ключ для подписи (в реальном приложении лучше хранить в env)
-            { expiresIn: '1h' } // Время жизни токена
+            { userId: user._id, userRole: user.userRole },
+            'secret-key',
+            { expiresIn: '1h' }
         );
-
-        // Отправляем токен пользователю
-        res.json({ token });
+        res.json({ token, user });
 
     } catch (error) {
         console.error(error);
@@ -38,4 +33,4 @@ router.post('/login', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router; // Используем module.exports для экспорта маршрута
